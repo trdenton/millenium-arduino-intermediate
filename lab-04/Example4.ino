@@ -53,7 +53,7 @@ void loop()
 {
   // Update the servo position.
   servoPosition = servoPosition + 30;
-  if(servoPosition > 360) 
+  if(servoPosition > 180) 
   {
     servoPosition = 0;
   }
