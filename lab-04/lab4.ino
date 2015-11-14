@@ -1,78 +1,69 @@
 #include <Servo.h>
-#include <LiquidCrystal.h>
-
-LiquidCrystal lcd(8, 13, 9, 4, 5, 6, 7);
-
-//variables used for keypresses
-const int KEY_SELECT = 4;
-const int KEY_LEFT = 3;
-const int KEY_DOWN = 2;
-const int KEY_UP = 1;
-const int KEY_RIGHT = 0;
-const int KEY_NONE = -1; 
-const int NUM_KEYS = 5;
-
-int adc_key_val[NUM_KEYS] = {50, 200, 400, 600, 800 };
-int adc_key_in;
-int key = KEY_NONE;
-
-
 
 //Servo Control variables
-const int PIN_SERVO = 3;
-int stepSize = 1;
-int servoPosition = 90;
+#define SERVO_PIN 3
 
+// Define characters for controlling servo
+#define INCREASE_STEP_SIZE       '+'
+#define DECREASE_STEP_SIZE       '-'
+#define MOVE_FORWARD             'F'
+#define MOVE_BACKWARD            'B'
+#define RESET_POSITION           'R'
+
+// Variable stores current servo position. 
+int currStepSize      = 1;
+int currServoPosition = 0;
+
+// Create instance of Servo object
 Servo myServo;
 
+
+/***
+ * setup()
+ * Description:  Initialize the Servo and Serial monitor.
+ **/
 void setup()
 {
-  lcd.clear(); 
-  lcd.begin(16, 2);
-  myServo.attach(PIN_SERVO);
-  printStatus();
-}
+  // Serial interface to print the current angle.
+  Serial.begin(9600);
+  
+  // Attach the servo to the desired pin.
+  myServo.attach(SERVO_PIN);
 
-void printStatus()
-{
-  lcd.clear();
-  lcd.print("Step size: ");//size is 11 characters
-  lcd.setCursor(11,0);  //move to 11th position and print the step size
-  lcd.print(stepSize);  
-  lcd.setCursor(0,1);
-  lcd.print("Position:  ");//size is 11 characters
-  lcd.setCursor(11,1);  //move to 11th position and print the position
-  lcd.print(servoPosition);
+  // Set the servo to the initial position. 
+  myServo.write(0);
 
+  // Print initial angle for the servo motor.
+  Serial.print("Initial angle: ");
+  Serial.println(myServo.read());
 }
 
 
+/***
+ * loop()
+ * Description:  Rotate servo 30 degrees every 3 seconds.
+ **/
 void loop()
 {
+  // Record the user input
+  int  userInput = 0;
 
-  
-  adc_key_in = analogRead(0);      // read the value from the sensor 
-  key = get_key(adc_key_in);       // convert into key press
- 
-  //TODO: make LCD keys control motor as per the lab manual
+  // Track whether to move the servo or not.
+  bool moveServo = false;
 
+  // If there is user input available. 
+  if(Serial.available())
+  {
+    // Read the input from the user.
+    userInput = Serial.read();
 
-  myServo.write(servoPosition);
-  delay(100);
-}
-
-// Convert ADC value to key number
-int get_key(unsigned int input)
-{
-    int k;
-   
-    for (k = 0; k < NUM_KEYS; k++) {
-      if (input < adc_key_val[k])
-        return k;
-    }
-   
-    if (k >= NUM_KEYS)             // No valid key pressed
-      k = -1;
-
-    return k;
+    // TODO - Use the user input to control the motor.
+    // If the user presses + increase the step size by 1.
+    // If the user presses - decrease the step size by 1.
+    // If the user presses R reset the position of the servo.
+    // If the user presses F move the servo forward by the
+    //    step size specified.
+    // If the user presses B move the servo backwards by the
+    //    step size specified.
+  }
 }
