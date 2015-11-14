@@ -1,10 +1,10 @@
 /***
- * Red River College - Arduino Workshop
+ * Millenium Library - Arduino Workshop
  * 
  * TITLE:        Lab #3
  * DESCRIPTION:  Scrolling text
  * AUTHOR:       Dario Schor (schor@ieee.org)
- * DATE:         March 15, 2014
+ * DATE:         November 14,2015
  *
  * This example uses the LiquidCrystal librady from:
  * http://arduino.cc/en/Reference/LiquidCrystal

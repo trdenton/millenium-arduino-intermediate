@@ -1,10 +1,10 @@
 /***
- * Red River College - Arduino Workshop
+ * Millenium Library - Arduino Workshop
  * 
  * TITLE:        Example #1
  * DESCRIPTION:  Blink an LED.
  * AUTHOR:       Dario Schor (schor@ieee.org)
- * DATE:         March 15, 2014
+ * DATE:         November 14,2015
  **/ 
 
 

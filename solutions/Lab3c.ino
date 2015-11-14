@@ -1,10 +1,10 @@
 /***
- * Red River College - Arduino Workshop
+ * Millenium Library - Arduino Workshop
  * 
  * TITLE:        Lab #3b
  * DESCRIPTION:  Moving pacman with the buttons.
  * AUTHOR:       Dario Schor (schor@ieee.org)
- * DATE:         March 15, 2014
+ * DATE:         November 14,2015
  *
  * This example uses the LiquidCrystal librady from:
  * http://arduino.cc/en/Reference/LiquidCrystal
