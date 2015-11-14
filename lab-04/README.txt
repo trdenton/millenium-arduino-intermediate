@@ -1,1 +1,1 @@
-Lab #4: Optical Sensor
+Lab #4: Regular Servo Motor
